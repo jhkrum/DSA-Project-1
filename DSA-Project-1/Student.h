@@ -8,9 +8,11 @@
 #include <iostream>
 #include <cstdint>
 #include <vector>
+#include <string>
 #include "Course.h"
+#include "Person.h"
 
-class Student {
+class Student : public Person{
 
 private:
 	uint32_t totalCreditHours;
@@ -22,13 +24,27 @@ private:
 public:
 
 	Student();
-	Student(uint32_t totalCreditHoursPar, uint32_t numberOfCoursesPar, uint32_t uidPar, double gpaPar, std::vector<Course> coursesPar);
-
-	//TODO addCourse & deleteCourse
-	//need more clarification on what to do specifically
+	Student(std::string name, uint8_t age, uint32_t totalCreditHoursPar, uint32_t numberOfCoursesPar, uint32_t uidPar, double gpaPar, std::vector<Course> coursesPar);
 
 	void addCourse(std::string codePar, std::string titlePar, double gradePar, uint8_t creditHourPar);
 	void deleteCourse(std::string courseName);
+
+	uint32_t getTotalCreditHours();
+	void setTotalCreditHours(uint32_t totalCreditHours);
+
+	uint32_t getNumberOfCourses();;
+	void setNumberOfCourses(uint32_t numberOfCourses);
+
+	uint32_t getUid();
+	void setUid(uint32_t uid);
+
+	double getGPA();
+	void setGPA(double gpa);
+
+	std::vector<Course> getCourses();
+	void setCourses(std::vector<Course> courses);
+
+	friend std::ostream& operator<<(std::ostream &os, const Student &s);
 };
 
 #endif //COP3530_STUDENT_H

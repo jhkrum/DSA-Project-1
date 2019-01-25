@@ -27,7 +27,7 @@ Person::Person() {
 
 }
 
-Person::Person(std::string namePar, uint32_t agePar) {
+Person::Person(string namePar, uint32_t agePar) {
     name=namePar;
     age=agePar;
 }

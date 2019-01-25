@@ -11,7 +11,7 @@
 
 class Person {
 
-private:
+protected:
     std::string name;
     uint32_t age;
 
