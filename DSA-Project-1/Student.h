@@ -26,6 +26,9 @@ public:
 
 	//TODO addCourse & deleteCourse
 	//need more clarification on what to do specifically
+
+	void addCourse(std::string codePar, std::string titlePar, double gradePar, uint8_t creditHourPar);
+	void deleteCourse(std::string courseName);
 };
 
 #endif //COP3530_STUDENT_H

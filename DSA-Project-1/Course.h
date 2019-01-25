@@ -24,10 +24,10 @@ public:
 
 	void setAll(const std::string code, const std::string title, double grade, uint8_t creditHour);
 
-	const std::string &getCode();
+	const std::string getCode();
 	void setCode(const std::string code);
 
-	const std::string &getTitle();
+	const std::string getTitle();
 	void setTitle(const std::string title);
 
 	double getGrade();

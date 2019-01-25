@@ -14,7 +14,7 @@ void Course::setAll(const string code, const string title, double grade, uint8_t
 	Course::setCreditHour(creditHour);
 }
 
-const string &Course::getCode() {
+const string Course::getCode() {
 	return code;
 }
 
@@ -22,7 +22,7 @@ void Course::setCode(const string code) {
 	Course::code = code;
 }
 
-const string &Course::getTitle() {
+const string Course::getTitle() {
 	return title;
 }
 
