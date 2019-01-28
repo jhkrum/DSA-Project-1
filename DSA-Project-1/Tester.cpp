@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Course.h"
 #include "Person.h"
+#include "Student.h"
+#include "Records.h"
 
 using namespace std;
 
@@ -32,10 +34,43 @@ static int courseTest() {
 	return 0;
 }
 
+static int studentTest() {
+	Course c("COP3530", "Data Structures & Algortihms", 3.5, 4);
+	vector<Course> temp;
+	temp.push_back(c);
+
+	Student s("Nisha", 20, 4, 2, 1111, 2.1, temp);
+
+	cout << s << "\n\n";
+
+	s.deleteCourse("COP3530");
+
+	cout << s << endl;
+
+	return 0;
+}
+
+static int recordsTest() {
+	Course c("COP3530", "Data Structures & Algortihms", 3.5, 4);
+	vector<Course> courses;
+	courses.push_back(c);
+	Student s("Nisha", 20, 4, 2, 1111, 2.1, courses);
+	Student s2("Justin", 20, 4, 2, 1111, 3.1, courses);
+	vector<Student> students = {};
+
+	Records r(students);
+
+	cout << r;
+
+	return 0;
+}
+
 int main() {
 
 	//personTest();
 	//courseTest();
+	//studentTest();
+	//recordsTest();
 
 	return 0;
 }

@@ -140,12 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Course.h" />
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="Records.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Person.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Course.cpp" />
+    <ClCompile Include="Database.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="Records.cpp" />
+    <ClCompile Include="Student.cpp" />
     <ClCompile Include="Tester.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -27,7 +27,7 @@ public:
 	Student(std::string name, uint8_t age, uint32_t totalCreditHoursPar, uint32_t numberOfCoursesPar, uint32_t uidPar, double gpaPar, std::vector<Course> coursesPar);
 
 	void addCourse(std::string codePar, std::string titlePar, double gradePar, uint8_t creditHourPar);
-	void deleteCourse(std::string courseName);
+	void deleteCourse(std::string courseCode);
 
 	uint32_t getTotalCreditHours();
 	void setTotalCreditHours(uint32_t totalCreditHours);
