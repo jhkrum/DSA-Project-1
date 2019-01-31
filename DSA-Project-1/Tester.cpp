@@ -7,6 +7,8 @@
 #include "Person.h"
 #include "Student.h"
 #include "Records.h"
+#include "Database.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -39,7 +41,7 @@ static int studentTest() {
 	vector<Course> temp;
 	temp.push_back(c);
 
-	Student s("Nisha", 20, 4, 2, 1111, 2.1, temp);
+	Student s("Nisha", 20, 4, 1, 1111, temp);
 
 	cout << s << "\n\n";
 
@@ -54,8 +56,8 @@ static int recordsTest() {
 	Course c("COP3530", "Data Structures & Algortihms", 3.5, 4);
 	vector<Course> courses;
 	courses.push_back(c);
-	Student s("Nisha", 20, 4, 2, 1111, 2.1, courses);
-	Student s2("Justin", 20, 4, 2, 1111, 3.1, courses);
+	Student s("Nisha", 20, 4, 2, 1111, courses);
+	Student s2("Justin", 20, 4, 2, 1111, courses);
 	vector<Student> students = {};
 
 	Records r(students);
@@ -65,12 +67,23 @@ static int recordsTest() {
 	return 0;
 }
 
+static int databaseTest() {
+	Database d("default.csv", "coursesDefaults.csv");
+	d.loadFiles();
+}
+
 int main() {
 
 	//personTest();
 	//courseTest();
 	//studentTest();
 	//recordsTest();
+	//databaseTest();
+
+	Database d("default.csv", "coursesDefaults.csv");
+	Menu menu(d);
+
+	menu.displayMenu();
 
 	return 0;
 }

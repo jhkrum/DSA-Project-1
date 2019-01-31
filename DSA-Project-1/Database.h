@@ -6,11 +6,10 @@
 #define COP3530_Database_H
 
 #include <iostream>
-#include <iomanip>
 #include <fstream>
 #include <string>
-#include <sstream>
 #include <vector>
+#include <cstdint>
 #include "Student.h"
 #include "Course.h"
 
@@ -20,15 +19,18 @@ private:
 
 	std::string studentFile;
 	std::string courseFile;
-	char splitChar;
+	std::vector<Student> studentList;
+	std::vector<Course> courseList;
+
+	std::vector<Student> loadStudents();
+	std::vector<Course> loadCourses(std::vector<Student> students);
 
 public:
 
 	Database();
-	Database(std::string studentFilePar, std::string courseFilePar, char splitCharPar);
+	Database(std::string studentFilePar, std::string courseFilePar);
 
-	std::vector<Student> loadStudents();
-	std::vector<Course> loadCourses();
+	void loadFiles();
 
 	std::string getStudentFile();
 	void setStudentFile(std::string studentFile);
@@ -36,10 +38,11 @@ public:
 	std::string getCourseFile();
 	void setCourseFile(std::string courseFile);
 
-	char getSplitChar();
-	void setSplitChar(char splitChar);
+	std::vector<Student> getStudentList();
+	void setStudentList(std::vector<Student> studentList);
 
-
+	std::vector<Course> getCourseList();
+	void setCourseList(std::vector<Course> courseList);
 };
 
 #endif

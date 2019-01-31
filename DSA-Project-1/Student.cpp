@@ -6,19 +6,35 @@
 
 using namespace std;
 
-void Student::addCourse(string codePar, string titlePar, double gradePar, uint8_t creditHourPar) {
-	Course newCourse(codePar, titlePar, gradePar, creditHourPar);
-	courses.push_back(newCourse);
+void Student::addCourse(Course c) {
+	courses.push_back(c);
+	numberOfCourses++;
+	gpa = recalculateGPA();
 }
 
 void Student::deleteCourse(string courseCode) {
 	for (int i = 0; i < courses.size(); i++) {
 		if (courses.at(i).getCode().compare(courseCode) == 0) {
+			totalCreditHours -= courses.at(i).getCreditHour();
 			courses.erase(courses.begin() + i);
 			numberOfCourses--;
+			gpa = recalculateGPA();
 		}
 	}
 }
+
+double Student::recalculateGPA() {
+	double newGPA = 0;
+	if (Student::courses.size() == 0) return 0;
+	for (Course c : Student::courses) {
+		newGPA += c.getGrade()*c.getCreditHour();
+	}
+
+	newGPA /= totalCreditHours;
+
+	return newGPA;
+}
+
 uint32_t Student::getTotalCreditHours() {
 	return totalCreditHours;
 }
@@ -59,12 +75,12 @@ void Student::setCourses(vector<Course> courses) {
 	Student::courses = courses;
 }
 
-Student::Student(string name, uint8_t age, uint32_t totalCreditHoursPar, uint32_t numberOfCoursesPar, uint32_t uidPar, double gpaPar, vector<Course> coursesPar) : Person(name, age) {
+Student::Student(string name, uint8_t age, uint32_t totalCreditHoursPar, uint32_t numberOfCoursesPar, uint32_t uidPar, vector<Course> coursesPar) : Person(name, age) {
 	totalCreditHours = totalCreditHoursPar;
 	numberOfCourses = numberOfCoursesPar;
 	uid = uidPar;
-	gpa = gpaPar;
 	courses = coursesPar;
+	gpa = recalculateGPA();
 }
 
 Student::Student() : Person(){
@@ -72,10 +88,10 @@ Student::Student() : Person(){
 }
 
 ostream& operator<<(std::ostream &os, const Student &s) {
-	os << "Name: " << s.name << "\nAge: " << s.age << "\nCredit Hours: " << s.totalCreditHours << "\nGPA:" << s.gpa << "\nNumber of Courses:" << s.numberOfCourses;
+	os << "Name: " << s.name << "\nAge: " << s.age << "\nCredit Hours: " << s.totalCreditHours << "\nGPA: " << s.gpa << "\nNumber of Courses: " << s.numberOfCourses << endl;
 
 	for (Course c : s.courses) {
-		os << "\n" << c << endl;
+		os << c;
 	}
 
 	return os;

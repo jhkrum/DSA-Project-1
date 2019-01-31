@@ -20,13 +20,14 @@ private:
 	uint32_t uid;
 	double gpa;
 	std::vector<Course> courses;
-
+	
+	double recalculateGPA();
 public:
 
 	Student();
-	Student(std::string name, uint8_t age, uint32_t totalCreditHoursPar, uint32_t numberOfCoursesPar, uint32_t uidPar, double gpaPar, std::vector<Course> coursesPar);
+	Student(std::string name, uint8_t age, uint32_t totalCreditHoursPar, uint32_t numberOfCoursesPar, uint32_t uidPar, std::vector<Course> coursesPar);
 
-	void addCourse(std::string codePar, std::string titlePar, double gradePar, uint8_t creditHourPar);
+	void addCourse(Course c);
 	void deleteCourse(std::string courseCode);
 
 	uint32_t getTotalCreditHours();
