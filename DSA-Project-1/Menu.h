@@ -29,6 +29,7 @@ public:
 	void studentRecord();
 	void addStudent();
 	void deleteStudent();
+	Student addCourseToStudent(Student s);
 	void addCourseToStudent();
 	void deleteCourseFromStudent();
 	void clearScreen();

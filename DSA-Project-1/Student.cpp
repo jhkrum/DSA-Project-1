@@ -6,23 +6,31 @@
 
 using namespace std;
 
+//Adds a course onto the Student's courseList
 void Student::addCourse(Course c) {
-	courses.push_back(c);
-	numberOfCourses++;
-	gpa = recalculateGPA();
+	courses.push_back(c);	//Adds the course to the list
+	numberOfCourses = courses.size();	//Recalculates number of courses
+	uint32_t temp = 0;
+	for (Course c : courses) {
+		temp += c.getCreditHour();	//Calculates total Credit hours
+	}
+	totalCreditHours = temp;
+	gpa = recalculateGPA();	//Recalculates GPA
 }
 
+//Deletes course from a Student's courseList
 void Student::deleteCourse(string courseCode) {
 	for (int i = 0; i < courses.size(); i++) {
 		if (courses.at(i).getCode().compare(courseCode) == 0) {
-			totalCreditHours -= courses.at(i).getCreditHour();
-			courses.erase(courses.begin() + i);
-			numberOfCourses--;
-			gpa = recalculateGPA();
+			totalCreditHours -= courses.at(i).getCreditHour();	//Calculates total credit hours
+			courses.erase(courses.begin() + i);	//Removes course from the list
+			numberOfCourses--;	//Recalculates the number of courses
+			gpa = recalculateGPA();	//Recaulcuates GPA
 		}
 	}
 }
 
+//Recalculates GPA of students
 double Student::recalculateGPA() {
 	double newGPA = 0;
 	if (Student::courses.size() == 0) return 0;
@@ -84,7 +92,9 @@ Student::Student(string name, uint8_t age, uint32_t totalCreditHoursPar, uint32_
 }
 
 Student::Student() : Person(){
-
+	totalCreditHours = 0;
+	numberOfCourses = 0;
+	gpa = 0;
 }
 
 ostream& operator<<(std::ostream &os, const Student &s) {

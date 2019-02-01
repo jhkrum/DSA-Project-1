@@ -40,7 +40,7 @@ vector<Student> Database::loadStudents() {
 		getline(fin, line);
 		s.setGPA(stod(line.substr(line.find_first_not_of(' '))));
 
-		students.push_back(s);
+		students.push_back(s); //Pushes the student into the vector of Students
 	}
 	return students;
 }
@@ -58,15 +58,15 @@ vector<Course> Database::loadCourses(vector<Student> students) {
 		//Sets uid
 		int tempUid = stoi(line);
 
-		//Grabs and sets name
+		//Grabs and sets Course Code
 		getline(fin, line, ',');
-		c.setCode(line.substr(line.find_first_not_of(' ')).substr(1, line.length() - 3));
+		c.setCode(line.substr(line.find_first_not_of(' ')).substr(1, line.length() - 2));
 
-		//Grabs and sets age
+		//Grabs and sets Course Title
 		getline(fin, line, ',');
 		c.setTitle(line.substr(line.find_first_not_of(' ')).substr(1, line.length() - 3));
 
-		//Grabs and sets total credit hours
+		//Grabs and sets credit hours
 		getline(fin, line, ',');
 		c.setCreditHour(stoi(line.substr(line.find_first_not_of(' '))));
 
@@ -74,7 +74,7 @@ vector<Course> Database::loadCourses(vector<Student> students) {
 		getline(fin, line);
 		c.setGrade(stod(line.substr(line.find_first_not_of(' '))));
 
-		courses.push_back(c);
+		courses.push_back(c);//Pushes the course into the vector of Courses
 
 		for (int i = 0; i < studentList.size(); i++) {
 			if (tempUid == studentList.at(i).getUid()) {
@@ -85,49 +85,60 @@ vector<Course> Database::loadCourses(vector<Student> students) {
 	return courses;
 }
 
+//Loads both the students and the courses with them
 void Database::loadFiles() {
 	studentList = loadStudents();
 	courseList = loadCourses(studentList);
 }
 
+//Returns the student file name
 string Database::getStudentFile() {
 	return studentFile;
 }
 
+//Sets the student file name
 void Database::setStudentFile(string studentFile) {
 	Database::studentFile = studentFile;
 }
 
+//Returns the course file name
 string Database::getCourseFile() {
 	return courseFile;
 }
 
+//Sets the course file name
 void Database::setCourseFile(string courseFile) {
 	Database::courseFile = courseFile;
 }
 
+//Returns the list of students
 vector<Student> Database::getStudentList() {
 	return studentList;
 }
 
+//Sets the list of students
 void Database::setStudentList(vector<Student> studentList) {
 	Database::studentList = studentList;
 }
 
+//Returns the list of courses
 vector<Course> Database::getCourseList() {
 	return courseList;
 }
 
+//Sets the list of courses
 void Database::setCourseList(vector<Course> courseList) {
 	Database::courseList = courseList;
 }
 
+//Parametrized constructor with studentFile and courseFile locations
 Database::Database(string studentFilePar, string courseFilePar) {
 	studentFile = studentFilePar;
 	courseFile = courseFilePar;
 	loadFiles();
 }
 
+//Default constructor
 Database::Database() {
 
 }
