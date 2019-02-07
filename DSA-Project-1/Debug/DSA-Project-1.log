@@ -1,5 +1,0 @@
-﻿  Menu.cpp
-d:\programming\github\dsa-project-1\dsa-project-1\menu.cpp(129): warning C4018: '<': signed/unsigned mismatch
-d:\programming\github\dsa-project-1\dsa-project-1\menu.cpp(152): warning C4018: '<': signed/unsigned mismatch
-d:\programming\github\dsa-project-1\dsa-project-1\menu.cpp(250): warning C4018: '<': signed/unsigned mismatch
-  DSA-Project-1.vcxproj -> D:\Programming\GitHub\DSA-Project-1\Debug\DSA-Project-1.exe
